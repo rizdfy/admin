@@ -44,6 +44,7 @@
         <p>Selamat datang, <span id="user-email"></span>!</p>
 
         <div id="form-barang">
+            
             <input type="text" id="namaBarang" placeholder="Nama Barang" />
             <input type="number" id="hargaBarang" placeholder="Harga (Rp)" />
             <button id="btnTambah">Tambah Barang</button>
@@ -68,6 +69,8 @@
                 </table>
             </div>
         </div>
+        <button id="convert-btn">Convert ke Spreadsheet</button>
+
     </div>
 
     <!-- Notifikasi perubahan harga -->
@@ -80,5 +83,8 @@
         <p><strong>Selisih:</strong> Rp <span id="selisih-harga">-</span></p>
     </div>
     <script type="module" src="main.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
 </body>
 </html>
