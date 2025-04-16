@@ -273,3 +273,31 @@ document.getElementById("show-login").addEventListener("click", (e) => {
 });
 
 showLogin();
+
+document.getElementById("convert-btn").addEventListener("click", () => {
+    const rows = document.querySelectorAll("#barangList tr");
+    if (rows.length === 0) {
+        showAlert("Tidak ada data barang untuk diexport!", "warning");
+        return;
+    }
+
+    const data = [];
+
+    rows.forEach((row) => {
+        const cells = row.querySelectorAll("td");
+        if (cells.length >= 4) {
+            data.push({
+                No: cells[0].innerText,
+                Nama: cells[1].innerText,
+                Harga: cells[2].innerText,
+                "Terakhir Diedit": cells[3].innerText
+            });
+        }
+    });
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Daftar Barang");
+
+    XLSX.writeFile(workbook, "Daftar_Barang.xlsx");
+});
